@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- (1) -->
+<mapper namespace="schedule.domain.repository.schedule.ScheduleRepository">
+
+    <!-- (2) -->
+    <resultMap id="scheduleResultMap" type="schedule">
+        <id property="scheduleId" column="schedule_id" />
+        <result property="scheduleTitle" column="schedule_title" />
+        <result property="finished" column="finished" />
+        <result property="createdAt" column="created_at" />
+    </resultMap>
+
+    <!-- (3) -->
+    <select id="findOne" parameterType="String" resultMap="scheduleResultMap">
+    <![CDATA[
+        SELECT
+            schedule_id,
+            schedule_title,
+            TO_CHAR(schedule_date_from,'YYYYMMDDHHMM'),
+            TO_CHAR(schedule_date_to,'YYYYMMDDHHMM'),
+            finished,
+            created_at
+        FROM
+            schedule
+        WHERE
+            schedule_id = #{scheduleId}
+    ]]>
+    </select>
+
+    <!-- (4) -->
+    <select id="findAll" resultMap="scheduleResultMap">
+    <![CDATA[
+        SELECT
+            schedule_id,
+            schedule_title,
+            TO_CHAR(schedule_date_from,'YYYYMMDDHHMM'),
+            TO_CHAR(schedule_date_to,'YYYYMMDDHHMM'),
+            finished,
+            created_at
+        FROM
+            schedule
+    ]]>
+    </select>
+
+    <!-- (5) -->
+    <insert id="create" parameterType="schedule">
+    <![CDATA[
+        INSERT INTO schedule
+        (
+            schedule_id,
+            schedule_title,
+            schedule_date_from,
+            schedule_date_to,
+            schedule_title,
+            finished,
+            created_at
+        )
+        VALUES
+        (
+            #{scheduleId},
+            #{scheduleTitle},
+            TODATE_(#{scheduleDateFrom},'YYYYMMDDHHMM'),
+            TODATE_(#{scheduleDateTo},'YYYYMMDDHHMM'),
+            #{finished},
+            #{createdAt}
+        )
+    ]]>
+    </insert>
+
+    <!-- (6) -->
+    <update id="update" parameterType="schedule">
+    <![CDATA[
+        UPDATE schedule
+        SET
+            schedule_title = #{scheduleTitle},
+            finished = #{finished},
+            created_at = #{createdAt}
+        WHERE
+            schedule_id = #{scheduleId}
+    ]]>
+    </update>
+
+    <!-- (7) -->
+    <delete id="delete" parameterType="schedule">
+    <![CDATA[
+        DELETE FROM
+            schedule
+        WHERE
+            schedule_id = #{scheduleId}
+    ]]>
+    </delete>
+
+    <!-- (8) -->
+    <select id="countByFinished" parameterType="Boolean"
+        resultType="Long">
+    <![CDATA[
+        SELECT
+            COUNT(*)
+        FROM
+            schedule
+        WHERE
+            finished = #{finished}
+    ]]>
+    </select>
+
+</mapper>
