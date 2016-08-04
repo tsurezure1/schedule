@@ -11,7 +11,9 @@ public class Schedule implements Serializable {
 
     private String scheduleTitle;
     
-    private String scheduleDateTo;
+    private String scheduleInfo;
+
+	private String scheduleDateTo;
 
 	private String scheduleDateFrom;
 
@@ -65,5 +67,13 @@ public class Schedule implements Serializable {
 
 	public void setScheduleDateFrom(String scheduleDateFrom) {
 		this.scheduleDateFrom = scheduleDateFrom;
+	}
+	
+    public String getScheduleInfo() {
+		return scheduleInfo;
+	}
+
+	public void setScheduleInfo(String scheduleInfo) {
+		this.scheduleInfo = scheduleInfo;
 	}
 }

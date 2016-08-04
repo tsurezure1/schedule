@@ -19,8 +19,8 @@
         SELECT
             schedule_id,
             schedule_title,
-            TO_CHAR(schedule_date_from,'YYYYMMDDHHMM'),
-            TO_CHAR(schedule_date_to,'YYYYMMDDHHMM'),
+            schedule_date_from,
+            schedule_date_to,
             finished,
             created_at
         FROM
@@ -36,8 +36,8 @@
         SELECT
             schedule_id,
             schedule_title,
-            TO_CHAR(schedule_date_from,'YYYYMMDDHHMM'),
-            TO_CHAR(schedule_date_to,'YYYYMMDDHHMM'),
+            schedule_Date_From,
+            schedule_Date_To,
             finished,
             created_at
         FROM
@@ -52,9 +52,9 @@
         (
             schedule_id,
             schedule_title,
+            schedule_info,
             schedule_date_from,
             schedule_date_to,
-            schedule_title,
             finished,
             created_at
         )
@@ -62,8 +62,9 @@
         (
             #{scheduleId},
             #{scheduleTitle},
-            TODATE_(#{scheduleDateFrom},'YYYYMMDDHHMM'),
-            TODATE_(#{scheduleDateTo},'YYYYMMDDHHMM'),
+            #{scheduleInfo},
+            #{scheduleDateFrom},
+            #{scheduleDateTo},
             #{finished},
             #{createdAt}
         )

@@ -7,20 +7,6 @@
 </head>
 <body>
     <h1>Schedule List</h1>
-    <div id="scheduleForm">
-        <t:messagesPanel />
-        <form:form
-           action="${pageContext.request.contextPath}/schedule/create"
-            method="post" modelAttribute="scheduleForm">
-            <form:input path="scheduleTitle" />
-            <form:errors path="scheduleTitle" />
-            <form:input path="scheduleDateFrom" />
-            <form:errors path="scheduleDateFrom" />
-            <form:input path="scheduleDateTo" />
-            <form:errors path="scheduleDateTo" />
-            <form:button>Create Schedule</form:button>
-        </form:form>
-    </div>
     <hr />
     <div id="scheduleList">
         <ul>
@@ -44,12 +30,7 @@
                                 <form:button>Finish</form:button>
                             </form:form>
                          </c:otherwise>
-                    </c:choose>
-                    ${f:h(schedule.scheduleDateFrom)}
-                    <p>
-                     - 
-                    </p>
-                    ${f:h(schedule.scheduleDateTo)}                    
+                    </c:choose>            
                     <form:form
                         action="${pageContext.request.contextPath}/schedule/delete"
                         method="post" modelAttribute="scheduleForm"
@@ -58,9 +39,14 @@
                             value="${f:h(schedule.scheduleId)}" />
                         <form:button>Delete</form:button>
                     </form:form>
+                    <br>
+                    予定時間：${f:h(schedule.scheduleDateFrom)} - ${f:h(schedule.scheduleDateTo)}        
                     </li>
             </c:forEach>
         </ul>
     </div>
-</body>
+    <hr>
+    <input type="button" value="Add schedule" onClick="document.location='insert';">
+    
+ </body>
 </html>

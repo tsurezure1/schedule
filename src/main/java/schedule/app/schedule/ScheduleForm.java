@@ -25,12 +25,15 @@ public class ScheduleForm implements Serializable {
     @Size(min = 1, max = 30, groups = { ScheduleCreate.class })
 	private String scheduleTitle;
     
+    @Size(max = 256, groups = { ScheduleCreate.class })
+    private String scheduleInfo;
+    
     @NotNull(groups = { ScheduleCreate.class })
-    @Size(min = 1, max = 12, groups = { ScheduleCreate.class })
+    @Size(min = 12, max = 12, groups = { ScheduleCreate.class })
 	private String scheduleDateFrom;
     
     @NotNull(groups = { ScheduleCreate.class })
-    @Size(min = 1, max = 12, groups = { ScheduleCreate.class })
+    @Size(min = 12, max = 12, groups = { ScheduleCreate.class })
 	private String scheduleDateTo;
     
     public String getScheduleId() {
@@ -63,6 +66,14 @@ public class ScheduleForm implements Serializable {
 
 	public void setScheduleDateTo(String scheduleDateTo) {
 		this.scheduleDateTo = scheduleDateTo;
+	}
+
+	public String getScheduleInfo() {
+		return scheduleInfo;
+	}
+
+	public void setScheduleInfo(String scheduleInfo) {
+		this.scheduleInfo = scheduleInfo;
 	}
     
     

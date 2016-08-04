@@ -8,8 +8,11 @@
 </head>
 <body>
     <div id="wrapper">
-        <h1>Hello world!</h1>
-        <p>The time on the server is ${serverTime}.</p>
+        <h1>スケジューラー</h1>
+        <p>ただいまの時刻は ${serverTime}です。</p>
+        
+        
+        <p><a href="http://localhost:8080/schedule/schedule/list">スケジューラーへ</a>
     </div>
 </body>
 </html>

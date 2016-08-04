@@ -1,11 +1,14 @@
 package schedule.app.schedule;
 
 import java.util.Collection;
+import java.util.Locale;
+
 import javax.inject.Inject;
 import javax.validation.groups.Default;
-import javax.validation.Valid;
 
 import org.dozer.Mapper;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -27,6 +30,10 @@ import schedule.domain.service.schedule.ScheduleService;
 @Controller
 @RequestMapping("schedule")
 public class ScheduleController {
+	
+    private static final Logger logger = LoggerFactory
+            .getLogger(ScheduleController.class);
+	
     @Inject
     ScheduleService scheduleService;
     
@@ -111,6 +118,13 @@ public class ScheduleController {
         attributes.addFlashAttribute(ResultMessages.success().add(
                 ResultMessage.fromText("Deleted successfully!")));
         return "redirect:/schedule/list";
+    }
+    
+    @RequestMapping(value = "insert", method = {RequestMethod.GET})
+    public String home(Locale locale, Model model) {
+        logger.info("Add scheduleへのリクエストがありました", locale);
+
+        return "schedule/insert";
     }
     
 }
