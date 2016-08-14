@@ -1,7 +1,6 @@
 package schedule.app.schedule;
 
 import java.util.Collection;
-import java.util.Locale;
 
 import javax.inject.Inject;
 import javax.validation.groups.Default;
@@ -59,7 +58,7 @@ public class ScheduleController {
     		BindingResult bindingResult, Model model, RedirectAttributes attributes) {
 
         if (bindingResult.hasErrors()) {
-            return list(model);
+            return insert(model);
         }
 
         Schedule schedule = beanMapper.map(scheduleForm, Schedule.class);
@@ -121,10 +120,20 @@ public class ScheduleController {
     }
     
     @RequestMapping(value = "insert", method = {RequestMethod.GET})
-    public String home(Locale locale, Model model) {
-        logger.info("Add scheduleへのリクエストがありました", locale);
+    public String insert(Model model) {
+        logger.info("Add scheduleへのリクエストがありました");
 
         return "schedule/insert";
+    }
+    
+    @RequestMapping(value = "info", method = RequestMethod.POST)
+    public String info(Model model, ScheduleForm form) {
+        logger.info("Add scheduleへのリクエストがありました");
+        
+        Schedule schedule = scheduleService.findOne(form.getScheduleId());
+        model.addAttribute("schedule", schedule); 
+
+        return "schedule/info";
     }
     
 }

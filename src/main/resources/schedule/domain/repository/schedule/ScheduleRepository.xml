@@ -21,6 +21,7 @@
             schedule_title,
             schedule_date_from,
             schedule_date_to,
+            schedule_info,
             finished,
             created_at
         FROM

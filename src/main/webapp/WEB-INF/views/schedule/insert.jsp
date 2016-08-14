@@ -14,15 +14,15 @@
             method="post" modelAttribute="scheduleForm">
             予定概要：
             <form:input path="scheduleTitle" />
-            <form:errors path="scheduleTitle" />
+            <form:errors path="scheduleTitle" cssClass="text-error"/>
             <br>
             予定開始時刻（YYYYMMDDHHMM）：
             <form:input path="scheduleDateFrom" />
-            <form:errors path="scheduleDateFrom" />
+            <form:errors path="scheduleDateFrom" cssClass="text-error"/>
             <br>
             予定終了時刻（YYYYMMDDHHMM）：
             <form:input path="scheduleDateTo" />
-            <form:errors path="scheduleDateTo" />
+            <form:errors path="scheduleDateTo" cssClass="text-error"/>
             <br>
             予定詳細：
             <br>
@@ -32,5 +32,7 @@
             <form:button>Create Schedule</form:button>
         </form:form>
     </div>
+    <input type="button" value="スケジュールへ" onClick="document.location='list';">
+    
 </body>
 </html>

@@ -23,6 +23,7 @@ public class ScheduleServiceImpl implements ScheduleService {
     @Inject
     ScheduleRepository scheduleRepository;
 
+    @Override
     public Schedule findOne(String scheduleId) {
     	Schedule schedule = scheduleRepository.findOne(scheduleId);
         if (schedule == null) {

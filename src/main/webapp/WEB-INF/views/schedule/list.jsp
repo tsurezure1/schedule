@@ -7,8 +7,9 @@
 </head>
 <body>
     <h1>Schedule List</h1>
-    <hr />
-    <div id="scheduleList">
+    <hr/>
+    <div id="scheduleForm">
+    <t:messagesPanel />
         <ul>
 
             <c:forEach items="${schedules}" var="schedule">
@@ -41,6 +42,16 @@
                     </form:form>
                     <br>
                     予定時間：${f:h(schedule.scheduleDateFrom)} - ${f:h(schedule.scheduleDateTo)}        
+                    <br>
+                    <form:form
+                        action="${pageContext.request.contextPath}/schedule/info"
+                        method="post"
+                        modelAttribute="scheduleForm"
+                        cssStyle="display: inline-block;">
+                        <form:hidden path="scheduleId"
+                            value="${f:h(schedule.scheduleId)}" />
+                        <form:button>Information</form:button>
+                    </form:form>
                     </li>
             </c:forEach>
         </ul>

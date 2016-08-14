@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Schedule List</title>
+<title>Schedule Info</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/app/css/styles.css" type="text/css">
 </head>
 <body>
@@ -13,6 +13,8 @@
 予定詳細：
 <br>
 ${f:h(schedule.scheduleInfo)}
-
+<br>
+<br>
+<input type="button" value="スケジュールへ" onClick="document.location='list';">
 </body>
 </html>

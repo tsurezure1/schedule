@@ -10,9 +10,7 @@
     <div id="wrapper">
         <h1>スケジューラー</h1>
         <p>ただいまの時刻は ${serverTime}です。</p>
-        
-        
-        <p><a href="http://localhost:8080/schedule/schedule/list">スケジューラーへ</a>
+        <input type="button" value="スケジュールへ" onClick="document.location='schedule/list';">
     </div>
 </body>
 </html>
